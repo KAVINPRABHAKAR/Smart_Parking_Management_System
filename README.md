@@ -7,7 +7,7 @@ A smart and efficient Smart Parking Management System designed to automate parki
 This system helps reduce congestion, improve parking efficiency, and provide a seamless experience for users and administrators.
 
 
-# Project Description
+## Project Description
 
 The Smart Parking Management System is built to simplify and optimize parking operations using automation and real-time monitoring.
 
@@ -286,6 +286,5 @@ This project is ideal for smart cities, malls, offices, colleges, and beginners 
 
 
 ![project_output](Output_Screenshots/pdf_report1.png)
-
 
 
