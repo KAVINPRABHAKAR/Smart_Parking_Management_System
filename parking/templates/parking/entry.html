@@ -1,0 +1,65 @@
+{% extends 'parking/base.html' %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg border-0" style="width: 100%; max-width: 600px;">
+        <div class="card-header bg-primary text-white text-center py-3">
+            <h4 class="mb-0">🚗 Vehicle Entry Registration</h4>
+        </div>
+        <div class="card-body p-4">
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Customer Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light">👤</span>
+                        <input type="text" name="customer_name" class="form-control" placeholder="e.g. John Doe" required>
+                    </div>
+                    <small class="text-muted">The name will be used for billing and reports.</small>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Vehicle Number Plate</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light">🔢</span>
+                        <input type="text" name="vehicle_number" class="form-control" placeholder="e.g. ABC-1234" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Select Parking Zone</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light">📍</span>
+                        <select name="parking_zone" class="form-select" required>
+                            <option value="" disabled selected>--Select Parking Zone--</option>
+                            <option value="standard">Standard Zone (40 Slots Available)</option>
+                            <option value="vip">VIP Zone (30 Slots Available)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-bold">Vehicle Type</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-light">🚙</span>
+                        <select name="vehicle_type" class="form-select" required>
+                            <option value="CAR">Car</option>
+                            <option value="BIKE">Bike</option>
+                            <option value="EV">EV (Electric Vehicle)</option>
+                            <option value="HEAVY">Heavy Vehicle</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+                    Assign Parking Slot
+                </button>
+            </form>
+        </div>
+        <div class="card-footer bg-light text-center py-2">
+            <a href="{% url 'dashboard' %}" class="text-decoration-none small text-secondary">← Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

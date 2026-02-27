@@ -1,0 +1,135 @@
+{% extends 'parking/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-0 mt-5">
+            <div class="card-header bg-danger text-white text-center py-3">
+                <h4 class="mb-0">🏁 Vehicle Exit & Billing</h4>
+            </div>
+            <div class="card-body p-4">
+                
+                {% if not show_receipt %}
+                <form method="POST" id="exitSearchForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Customer Name</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text bg-light">👤</span>
+                            <select name="customer_name" id="nameDropdown" class="form-select" required onchange="autoFillVehicleNumber()">
+                                <option value="" selected disabled>-- Select Registered Name --</option>
+                                {% for customer in active_customers %}
+                                    <option value="{{ customer.vehicle_number }}" 
+                                        {% if transaction.vehicle_number == customer.vehicle_number %}selected{% endif %}>
+                                        {{ customer.customer_name }} ({{ customer.vehicle_number }})
+                                    </option>
+                                {% empty %}
+                                    <option disabled>No active vehicles found in lot</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <label class="form-label fw-bold">Vehicle Number</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-light">🔢</span>
+                            <input type="text" name="vehicle_number" id="vNumberInput" class="form-control" 
+                                   placeholder="Will auto-fill..." 
+                                   value="{{ transaction.vehicle_number|default:'' }}" readonly required>
+                            <button type="submit" name="action" value="calculate" class="btn btn-dark">
+                                🔍 Calculate
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                {% if transaction %}
+                <div class="mt-4 p-4 border rounded bg-light shadow-sm animate__animated animate__fadeIn">
+                    <h5 class="text-primary border-bottom pb-2 mb-3">💰 Payment Summary</h5>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Verified Customer:</span>
+                        <span class="fw-bold text-uppercase">{{ transaction.customer_name }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted">Vehicle Type:</span>
+                        <span class="badge bg-secondary">{{ transaction.slot.get_vehicle_type_display }}</span>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fs-5 fw-bold">Total Fee:</span>
+                        <span class="fs-3 fw-bold text-success">${{ fee|floatformat:2 }}</span>
+                    </div>
+
+                    <form method="POST" class="mt-4">
+                        {% csrf_token %}
+                        <input type="hidden" name="vehicle_number" value="{{ transaction.vehicle_number }}">
+                        <div class="d-grid gap-2">
+                            <button type="submit" name="action" value="process_payment" class="btn btn-success btn-lg fw-bold shadow">
+                                ✅ Pay Fee & Process Exit
+                            </button>
+                            <a href="." class="btn btn-outline-secondary btn-sm">Clear / Cancel</a>
+                        </div>
+                    </form>
+                </div>
+                {% endif %}
+
+                {% else %}
+                <div class="text-center py-4 animate__animated animate__bounceIn">
+                    <div class="display-1 text-success mb-3">✅</div>
+                    <h3 class="fw-bold text-success">Payment Successful!</h3>
+                    <p class="text-muted">Vehicle <strong>{{ transaction.vehicle_number }}</strong> has been checked out.</p>
+                    
+                    <div class="card bg-white border mb-4 shadow-sm">
+                        <div class="card-body text-start">
+                            <div class="row">
+                                <div class="col-6 text-muted">Customer:</div>
+                                <div class="col-6 fw-bold text-end">{{ transaction.customer_name }}</div>
+                                <div class="col-6 text-muted">Amount Paid:</div>
+                                <div class="col-6 fw-bold text-end text-success">${{ transaction.fee_charged|floatformat:2 }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-3">
+                        <a href="{% url 'generate_receipt' transaction.id %}" class="btn btn-primary btn-lg shadow">
+                            📄 Download Fee Receipt (PDF)
+                        </a>
+                        <a href="." class="btn btn-outline-secondary">Process Another Exit</a>
+                        <a href="{% url 'dashboard' %}" class="btn btn-link text-decoration-none text-muted">Return to Dashboard</a>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+            <div class="card-footer text-center bg-light text-muted small">
+                Fees: First 2 hours fixed, followed by per-hour variable pricing.
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function autoFillVehicleNumber() {
+        const dropdown = document.getElementById('nameDropdown');
+        const vInput = document.getElementById('vNumberInput');
+        vInput.value = dropdown.value;
+    }
+</script>
+
+<style>
+    .animate__fadeIn { animation: fadeIn 0.5s; }
+    .animate__bounceIn { animation: bounceIn 0.6s; }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounceIn {
+        0% { opacity: 0; transform: scale(0.3); }
+        50% { opacity: 1; transform: scale(1.05); }
+        70% { transform: scale(0.9); }
+        100% { transform: scale(1); }
+    }
+</style>
+{% endblock %}
