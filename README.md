@@ -7,9 +7,14 @@ A smart and efficient Smart Parking Management System designed to automate parki
 This system helps reduce congestion, improve parking efficiency, and provide a seamless experience for users and administrators.
 
 
+
 ## Project Description
 
+
 The Smart Parking Management System is built to simplify and optimize parking operations using automation and real-time monitoring.
+
+
+
 
 ## It allows administrators to:
 
@@ -23,7 +28,7 @@ The Smart Parking Management System is built to simplify and optimize parking op
 
     - Improve parking utilization and traffic flow
 
-This project is ideal for smart cities, malls, offices, colleges, and beginners learning IoT/web-based system design.
+
 
 
 ## Features
@@ -32,7 +37,11 @@ This project is ideal for smart cities, malls, offices, colleges, and beginners 
 
     - Vehicle entry and exit monitoring
 
+    - Normal parking slots & VIP parking slots
+
     - Automated slot allocation
+
+    - Billing based on Parking Time
 
     - Admin dashboard for parking management
 
@@ -90,7 +99,7 @@ This project is ideal for smart cities, malls, offices, colleges, and beginners 
 
     pip install -r requirements.txt
 
-    If requirements.txt is not available, install Django manually:
+    If requirements.txt is not available, install Django manually
 
     pip install django
 
@@ -99,6 +108,7 @@ This project is ideal for smart cities, malls, offices, colleges, and beginners 
 ### Step 6: Apply Database Migrations
 
     python manage.py makemigrations
+    
     python manage.py migrate
 
 
