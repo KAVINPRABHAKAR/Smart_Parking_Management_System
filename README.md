@@ -1,4 +1,4 @@
-# Smart_Parking_Management_System
+# Smart Parking Management System
 
 
 A smart and efficient Smart Parking Management System designed to automate parking slot allocation, vehicle entry/exit tracking, and real-time parking availability. 
