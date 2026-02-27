@@ -167,61 +167,82 @@ This project is ideal for smart cities, malls, offices, colleges, and beginners 
 
 ## Output Screenshots
 
+
 ### Admin Page
 
+
+
 ![project_output](Output_Screenshots/admin.png)
+
 
 
 ### Login Page
 
 
+
 ![project_output](Output_Screenshots/login.png)
+
 
 
 ### Dashboard Page
 
 
+
 ![project_output](Output_Screenshots/dashboard.png)
+
 
 
 ![project_output](Output_Screenshots/dashboard1.png)
 
 
+
 ![project_output](Output_Screenshots/dashboard2.png)
 
 
+
 ![project_output](Output_Screenshots/dashboard3.png)
+
 
 
 ![project_output](Output_Screenshots/dashboard4.png)
 
 
 
+
 ### Vehicle Entry Registration Page
+
 
 
 ![project_output](Output_Screenshots/entry_registration.png)
 
 
+
 ![project_output](Output_Screenshots/entry_registration2.png)
+
 
 
 ![project_output](Output_Screenshots/entry_registration3.png)
 
 
+
 ![project_output](Output_Screenshots/entry_registration4.png)
+
 
 
 ![project_output](Output_Screenshots/entry_registration5.png)
 
 
+
 ![project_output](Output_Screenshots/entry_registration6.png)
+
 
 
 ![project_output](Output_Screenshots/entry_registration7.png)
 
 
+
 ![project_output](Output_Screenshots/entry_registration8.png)
+
 
 
 ![project_output](Output_Screenshots/entry_registration9.png)
@@ -229,34 +250,45 @@ This project is ideal for smart cities, malls, offices, colleges, and beginners 
 
 
 
+
 ### Vehicle Exit from Parking 
+
 
 
 ![project_output](Output_Screenshots/exit_parking.png)
 
 
+
 ![project_output](Output_Screenshots/exit_parking1.png)
+
 
 
 ![project_output](Output_Screenshots/exit_parking2.png)
 
 
+
 ![project_output](Output_Screenshots/exit_parking3.png)
+
 
 
 ![project_output](Output_Screenshots/exit_parking4.png)
 
 
+
 ![project_output](Output_Screenshots/exit_parking5.png)
+
 
 
 ![project_output](Output_Screenshots/exit_parking6.png)
 
 
+
 ![project_output](Output_Screenshots/exit_parking7.png)
 
 
+
 ![project_output](Output_Screenshots/exit_parking8.png)
+
 
 
 
@@ -266,23 +298,30 @@ This project is ideal for smart cities, malls, offices, colleges, and beginners 
 ![project_output](Output_Screenshots/parking_bill.png)
 
 
+
 ![project_output](Output_Screenshots/parking_bill1.png)
+
 
 
 
 ### Revenue Reports
 
 
+
 ![project_output](Output_Screenshots/revenue_reports.png)
+
 
 
 ![project_output](Output_Screenshots/revenue_reports1.png)
 
 
+
 ![project_output](Output_Screenshots/revenue_reports2.png)
 
 
+
 ![project_output](Output_Screenshots/pdf_report.png)
+
 
 
 ![project_output](Output_Screenshots/pdf_report1.png)
